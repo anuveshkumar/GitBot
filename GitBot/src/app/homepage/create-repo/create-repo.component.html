@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!created">
     <h1>New Repository</h1>
     <form #repoForm="ngForm" (ngSubmit)="onSubmit(repoForm.value)">
         <div class="form-group">
@@ -50,4 +50,19 @@
         <hr>
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
+</div>
+
+<div role="document" class="modal-dialog" *ngIf="created">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">{{ model.name }} sucessfully created</h4>
+        </div>
+        <div class="modal-body">
+            <p>HTTPS: {{https_url}}</p>
+            <p>SSH: {{ssh_url}}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modalClick()">Close</button>
+        </div>
+    </div>
 </div>

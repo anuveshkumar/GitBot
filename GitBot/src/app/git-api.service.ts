@@ -16,9 +16,12 @@ export class GitApiService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Authorization': 'Token  c6bca9c8e7a684fd75f3f7d77a0d1d89d65c1103'
-    })
+      'Authorization': 'Token 98f5c7fc537b1fd9b8e788f15df7b4e010df1c8b',
+    }),
+    observe: 'response' as 'body'
   };
+
+
   getAllRepos() {
     this.extention = 'user/repos'
     return this.httpclient.get(this.base_url + this.extention, this.httpOptions);
@@ -27,7 +30,6 @@ export class GitApiService {
   createRepo(repo: NewRepository) {
     this.extention = 'user/repos';
     return this.httpclient.post(this.base_url + this.extention, repo, this.httpOptions);
-
   }
 
 

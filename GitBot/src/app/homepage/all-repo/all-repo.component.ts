@@ -23,9 +23,6 @@ export class AllRepoComponent implements OnInit {
     this.showSSH = !this.showSSH;
   }
 
-
-
-
   ngOnInit() {
     if (this.action === 'retrieve_all_repo') {
       this.Entity = this.gitService.getAllRepos();
@@ -33,19 +30,17 @@ export class AllRepoComponent implements OnInit {
       this.Entity = this.favoriteService.getAllFavorites();
     }
     this.Entity.subscribe((data: any) => {
-      data.forEach(element => {
+      data.body.forEach(element => {
         this.allrepo.push(new RepoItem(element.id, element.name, element.private, element.clone_url, element.ssh_url,
           element.stargazers_count, element.created_at, element.description));
       });
     });
-    console.log(this.allrepo);
   }
+
   addToFavorites(toSave: RepoItem) {
     this.favoriteService.addToFavorites(toSave).subscribe((data: any) => {
       console.log(data);
     });
   }
-
-
 
 }
