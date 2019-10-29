@@ -1,0 +1,11 @@
+<app-homepage (actionSelected)="onNavigate($event)"></app-homepage>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-create-repo *ngIf="loadedSection === 'create_repo'"></app-create-repo>
+            <app-all-repo *ngIf="loadedSection === 'retrieve_all_repo'" [action]="loadedSection"></app-all-repo>
+            <app-all-repo *ngIf="loadedSection === 'retrieve_all_favorites'"></app-all-repo>
+            <p *ngIf="loadedSection === 'insensible'">I do not understand, teach me master</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="list-group">
+    <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let repoItem of allrepo">
+        <div class="d-flex w-100 justify-content-between d-inline-flex">
+            <h5 class="mb-1">{{ repoItem.name }}</h5>
+            <small>{{ repoItem.created_at}} <span
+                    class="badge badge-primary badge-pill">{{repoItem.stargazers_count}}</span></small>
+            <button class="button" (click)="addToFavorites(repoItem)">Add to Favorites</button>
+        </div> <small *ngIf="repoItem.private; else elseBlock">Private</small>
+        <ng-template #elseBlock><small>Public</small></ng-template>
+        <p class="mb-1">{{repoItem.description}}
+        </p>
+
+        <div class="form-inline">
+            <button class="button btn-primary btn-sm" (click)="onClick()">HTTPS</button>
+            <button class="button btn-primary btn-sm" (click)="onClick()">SSH</button>
+            <div *ngIf="showHTTP">
+                <p>{{repoItem.clone_url}}</p>
+            </div>
+            <div *ngIf="showSSH">
+                <p>{{repoItem.ssh_url}}</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
